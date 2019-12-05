@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 
 class CollectUrls:
     """搜集特定小说所有章节的url和章节名字"""
+
     def __init__(self, directory):
         self.directory = directory  # 小说目录页网址
         self.__infos = []
@@ -24,7 +25,7 @@ class CollectUrls:
 
             url = 'https://www.wuxiaworld.com' + tag_a['href']
             info.append(url)
-            info.append(tag_a.find('span').text)
+            info.append(tag_a.text).strip()
 
             self.__infos.append(info)
 
