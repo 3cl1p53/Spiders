@@ -115,8 +115,24 @@ class Spider:
 
 
 if __name__ == '__main__':
+    """
+    获取单次行程的所有航班信息
+    """
     spider = Spider()
     # 在initialize方法中写入需要的参数，完成url的配置
     spider.initialize("PEK", "CTU", hour=18, date=6, month=8, year=2020)
     # 运行run()方法完成航班信息获取
     spider.run()
+
+    """
+    获取多次行程的所有航班信息
+    """
+    goals = [
+        ["PEK", "CTU", 6, 7, 8, 2020],
+        ["PEK", "CTU", 6, 8, 8, 2020],
+        ["PEK", "CTU", 6, 9, 8, 2020],
+    ]
+    for goal in goals:
+        spider.initialize(goal[0], goal[1], hour=goal[2], date=goal[3], month=goal[4], year=goal[5])
+        spider.run()
+    
